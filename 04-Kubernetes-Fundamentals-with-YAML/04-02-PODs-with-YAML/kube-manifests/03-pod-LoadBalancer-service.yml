@@ -5,7 +5,7 @@ metadata:
 spec:
   type: LoadBalancer # ClusterIp, # NodePort
   selector:
-    app: myapp
+    app: myapp # Important this selector should match the label in the pod definition
   ports: 
     - name: http
       port: 80 # Service Port
