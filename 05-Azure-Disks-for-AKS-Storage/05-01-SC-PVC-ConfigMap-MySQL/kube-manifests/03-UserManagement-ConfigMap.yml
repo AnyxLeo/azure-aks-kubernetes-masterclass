@@ -6,3 +6,9 @@ data:
   mysql_usermgmt.sql: |-
     DROP DATABASE IF EXISTS webappdb;
     CREATE DATABASE webappdb; 
+
+################################################################
+# A Kubernetes ConfigMap is an API object used to store non-sensitive configuration data as key-value pairs. 
+# Its primary purpose is to separate configuration settings from application code and container images, 
+# promoting portability and easier management of applications across different environments 
+# (e.g., development, testing, production).

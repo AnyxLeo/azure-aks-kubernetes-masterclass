@@ -4,15 +4,21 @@ metadata:
   name: mysql
 spec: 
   replicas: 1
-  selector:
+  # Pod selection criteria
+  selector:   
     matchLabels:
-      app: mysql
+    # Label to match Pods
+      app: mysql 
+  # Strategy for the Deployment
   strategy:
     type: Recreate 
+  # Template for the Pods
   template: 
     metadata: 
       labels: 
         app: mysql
+    # Pod specification
+    # This is where we define the container image, ports, volumes, etc.
     spec: 
       containers:
         - name: mysql
@@ -23,11 +29,14 @@ spec:
           ports:
             - containerPort: 3306
               name: mysql    
+          # Resources for the container
           volumeMounts:
             - name: mysql-persistent-storage
               mountPath: /var/lib/mysql    
             - name: usermanagement-dbcreation-script
-              mountPath: /docker-entrypoint-initdb.d #https://hub.docker.com/_/mysql Refer Initializing a fresh instance                                            
+              mountPath: /docker-entrypoint-initdb.d #https://hub.docker.com/_/mysql Refer Initializing a fresh instance      
+      # Volumes for the Pod spec level resources
+      # This is where we define the volumes that will be used by the containers in the Pod                                      
       volumes: 
         - name: mysql-persistent-storage
           persistentVolumeClaim:
